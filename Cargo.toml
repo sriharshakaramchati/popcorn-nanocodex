@@ -1,0 +1,30 @@
+[workspace]
+members = ["crates/popcorn-hand", "crates/popcorn-agent"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+nanocodex = "0.6.6"
+nanocodex-tools = "0.6.6"
+nanocodex-oai-api = "0.6.6"
+chromiumoxide = "0.9.1"
+async-tungstenite = { version = "0.32", features = ["tokio-rustls-native-certs"] }
+async-trait = "0.1"
+futures-util = "0.3"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["raw_value"] }
+thiserror = "2"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+url = "2"
+fs2 = "0.4"
+eyre = "0.6"
+
+[profile.dev]
+debug = "line-tables-only"
