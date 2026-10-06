@@ -81,8 +81,8 @@ impl std::fmt::Debug for PopcornSession {
 /// deployment splits them across tools.
 pub(crate) struct McpSessionDraft {
     pub(crate) session_id: String,
-    cdp_url: Option<String>,
-    live_view_url: Option<String>,
+    pub(crate) cdp_url: Option<String>,
+    pub(crate) live_view_url: Option<String>,
     region: Option<String>,
     expires_at: Option<String>,
 }
