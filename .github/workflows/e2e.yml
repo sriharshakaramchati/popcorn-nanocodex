@@ -1,0 +1,28 @@
+name: e2e
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: 'Task for the agent'
+        required: false
+        default: 'Open https://example.com, inspect the page, and report its main heading.'
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      POPCORN_CONTROL_PLANE_URL: ${{ vars.POPCORN_CONTROL_PLANE_URL }}
+      POPCORN_CLIENT_ID: ${{ secrets.POPCORN_CLIENT_ID }}
+      POPCORN_CLIENT_SECRET: ${{ secrets.POPCORN_CLIENT_SECRET }}
+      POPCORN_REGION: ${{ vars.POPCORN_REGION }}
+      RUST_LOG: info
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Build agent
+        run: cargo build -p popcorn-agent
+      - name: Run live E2E
+        run: cargo run -p popcorn-agent -- "${{ inputs.prompt }}"
