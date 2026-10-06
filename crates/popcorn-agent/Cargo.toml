@@ -1,0 +1,15 @@
+[package]
+name = "popcorn-agent"
+description = "CLI that drives a rented Popcorn browser session from a Nanocodex agent"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+eyre.workspace = true
+futures-util.workspace = true
+nanocodex.workspace = true
+popcorn-hand = { path = "../popcorn-hand" }
+serde_json.workspace = true
+tokio.workspace = true
