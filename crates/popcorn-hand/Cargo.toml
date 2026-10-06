@@ -1,0 +1,27 @@
+[package]
+name = "popcorn-hand"
+description = "A Nanocodex browser Hand backed by a rented Popcorn TEE session"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+chromiumoxide.workspace = true
+futures-util.workspace = true
+fs2.workspace = true
+nanocodex-oai-api.workspace = true
+nanocodex-tools.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+url.workspace = true
+
+# Feature unification: gives chromiumoxide's async-tungstenite edge rustls with
+# native roots so it can dial the wss:// CDP endpoint. No code uses this crate
+# directly; do not remove.
+async-tungstenite.workspace = true
