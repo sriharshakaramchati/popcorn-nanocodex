@@ -2,12 +2,13 @@ use std::path::{Path, PathBuf};
 
 use serde_json::json;
 
-use crate::config::{PopcornAccess, PopcornConfig, generated_idempotency_key};
+use crate::config::{PopcornAccess, PopcornConfig};
+use crate::DEFAULT_PURPOSE;
 use crate::control::{CreateSessionRequest, CreateSessionResponse};
 use crate::error::PopcornError;
 use crate::creds::{PopcornCredentialFile, default_credentials_path};
 use crate::session::{
-    McpSessionDraft, PopcornSession, checkout_link, credit_shortfall, lookup_str,
+    CHECKOUT_KEYS, McpSessionDraft, PopcornSession, checkout_link, credit_shortfall, lookup_str,
     payload_is_out_of_credit,
 };
 use crate::{HOSTED_MCP_URL, MCP_SERVER_NAME};
